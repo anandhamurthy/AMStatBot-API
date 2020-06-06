@@ -1,0 +1,1 @@
+web: gunicorn app: chat_deploy.py
