@@ -1,5 +1,6 @@
-from nltk.downloader import download, download_shell
+#from nltk.downloader import download, download_shell
 import nltk
+nltk.data.path.append("/nltk_data")
 import numpy
 import random
 from nltk.stem import WordNetLemmatizer
@@ -59,6 +60,4 @@ def predict(msg):
     return (random.choice(responses))
 
 if __name__ == "__main__":
-    import warnings
-    warnings.warn("use 'python -m nltk', not 'python -m nltk.downloader'",
     app.run(debug=True)
