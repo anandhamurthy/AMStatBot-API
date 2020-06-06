@@ -1,5 +1,5 @@
-import nltk
 from nltk.downloader import download, download_shell
+import nltk
 import numpy
 import random
 from nltk.stem import WordNetLemmatizer
