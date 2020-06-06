@@ -1,6 +1,6 @@
 #from nltk.downloader import download, download_shell
 import nltk
-nltk.data.path.append("/nltk_data")
+nltk.data.path.append("https://github.com/anandhamurthy/AMStatBot/tree/master/nltk_data")
 import numpy
 import random
 from nltk.stem import WordNetLemmatizer
