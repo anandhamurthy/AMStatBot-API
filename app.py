@@ -1,6 +1,7 @@
 #from nltk.downloader import download, download_shell
 import nltk
 nltk.download('punkt')
+nltk.download('wordnet')
 import numpy
 import random
 from nltk.stem import WordNetLemmatizer
