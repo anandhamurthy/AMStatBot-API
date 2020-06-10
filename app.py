@@ -65,7 +65,7 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
-@app.route('/predict/<msg>',methods=['POST'])
+@app.route('/predict/<msg>',methods=['GET','POST'])
 def predict(msg):
 
     if check(msg)=='Chat':
