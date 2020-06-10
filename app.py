@@ -26,7 +26,7 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
-@app.route('/predict/<msg>')
+@app.route('/predict/<msg>',methods=['GET','POST'])
 def predict(msg):
     data = pd.read_json('chat_intents.json')
     words = []
