@@ -14,7 +14,7 @@ import pandas_datareader.data as web
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
-symbols=pd.read_csv('tickers.csv')
+symbols=pd.read_csv('NASDAQ.txt', sep='\t', names=['Symbol', 'Company'])
 
 def get_name(msg):
     for i in range(len(symbols['Symbol'])):
