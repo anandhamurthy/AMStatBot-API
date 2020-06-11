@@ -28,9 +28,9 @@ def check_fake(msg):
 def check_spam(msg):
     r = requests.post(url='https://amspamclass.herokuapp.com/predict/' + msg)
     if r.text == 'True':
-        return 'Spam'
+        return True
     else:
-        return 'Ham'
+        return False
 
 def check(msg):
     if msg[0]=='%':
@@ -45,10 +45,10 @@ def check(msg):
             else:
                 return 'Real'
         elif 'spam'in msg[1:]:
-            if check_fake(msg[5:]):
-                return 'Fake'
+            if check_spam(msg[5:]):
+                return 'Spam'
             else:
-                return 'Real'
+                return 'Ham'
     else:
         return 'Chat'
 
