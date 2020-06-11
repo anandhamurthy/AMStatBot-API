@@ -9,10 +9,40 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
 import requests
+import datetime as dt
+import pandas_datareader.data as web
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 symbols=pd.read_csv('tickers.csv')
+
+def get_name(msg):
+    for i in range(len(symbols['Symbol'])):
+        if msg==symbols['Symbols'][i]:
+            return symbols['Company'][i]
+    else:
+        return msg
+
+def pct_change(open_price,current_price):
+    pct = ((current_price-open_price)/open_price)*100
+    return pct
+
+def get_details(msg):
+    start_date = dt.datetime(2015, 1, 1)
+    end_date = dt.datetime.now()
+    df = web.DataReader(msg, 'yahoo', start_date, end_date)
+    df.reset_index(inplace=True)
+    df.set_index("Date", inplace=True)
+    return jsonify(
+        name=get_name(msg),
+        website='https://amstock.herokuapp.com/' + msg[1:],
+        close=df['Close'][-1],
+        open=df['Open'][-1],
+        high=df['High'][-1],
+        low=df['Low'][-1],
+        volume=df['Volume'][-1],
+        percent=pct_change(df['Open'][-1], df['Close'][-1])
+    )
 
 def check_symbol(sym):
     for i in symbols['Symbol']:
@@ -96,8 +126,8 @@ def predict(msg):
 
         return (random.choice(responses))
     elif check(msg)=='Stock':
-        return jsonify(details='https://amstock.herokuapp.com/get/' + msg[1:],
-                       website='https://amstock.herokuapp.com/' + msg[1:])
+        if check_symbol(msg[1:]):
+            return get_details(msg[1:])
     elif check(msg)=='Fake':
         if check_fake(msg):
             return ('True')
