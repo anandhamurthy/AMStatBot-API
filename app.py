@@ -18,7 +18,7 @@ symbols=pd.read_csv('tickers.csv')
 
 def get_name(msg):
     for i in range(len(symbols['Symbol'])):
-        if msg==symbols['Symbols'][i]:
+        if msg==symbols['Symbol'][i]:
             return symbols['Company'][i]
     else:
         return msg
