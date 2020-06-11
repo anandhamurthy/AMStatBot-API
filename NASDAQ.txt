@@ -1,4 +1,3 @@
-Symbol	Description
 AACG	Ata Creativity Global
 AAL	American Airlines Gp
 AAME	Atlantic Amer Cp
