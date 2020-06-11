@@ -35,7 +35,7 @@ def get_details(msg):
     df.set_index("Date", inplace=True)
     return jsonify(
         name=get_name(msg),
-        website='https://amstock.herokuapp.com/' + msg,
+        website='https://amstock.herokuapp.com/%' + msg,
         close=df['Close'][-1],
         open=df['Open'][-1],
         high=df['High'][-1],
