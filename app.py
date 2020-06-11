@@ -14,6 +14,10 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 symbols=pd.read_csv('tickers.csv')
 
+def get_details(msg):
+    r = requests.post(url=msg)
+    return r
+
 def check_symbol(sym):
     for i in symbols['Symbol']:
         if sym==i:
@@ -97,7 +101,7 @@ def predict(msg):
         return (random.choice(responses))
     elif check(msg)=='Stock':
         return jsonify(
-        details='https://amstock.herokuapp.com/get/'+msg[1:],
+        details=get_details('https://amstock.herokuapp.com/get/'+msg[1:]),
         website='https://amstock.herokuapp.com/'+msg[1:])
     elif check(msg)=='Fake':
         if check_fake(msg):
