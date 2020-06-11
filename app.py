@@ -41,15 +41,9 @@ def check(msg):
             return 'Invalid Symbol'
     elif msg[0]=='_':
         if 'fake' in msg[1:]:
-            if check_fake(msg[5:]):
-                return 'Fake'
-            else:
-                return 'Real'
+            return 'Fake'
         elif 'spam'in msg[1:]:
-            if check_spam(msg[5:]):
-                return 'Spam'
-            else:
-                return 'Ham'
+            return 'Spam'
     else:
         return 'Chat'
 
@@ -110,9 +104,9 @@ def predict(msg):
             return ('False')
     elif check(msg)=='Spam':
         if check_spam(msg):
-            return ('True')
+            return ('Spam')
         else:
-            return ('False')
+            return ('Ham')
 
 if __name__ == "__main__":
     app.run(debug=True)
