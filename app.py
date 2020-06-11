@@ -96,9 +96,9 @@ def predict(msg):
 
         return (random.choice(responses))
     elif check(msg)=='Stock':
-        return jsonify(
-        details='https://amstock.herokuapp.com/get/'+msg[1:],
-        website='https://amstock.herokuapp.com/'+msg[1:])
+        return {"data": [{
+                "details":'https://amstock.herokuapp.com/get/' + msg[1:],
+                        "website" : 'https://amstock.herokuapp.com/' + msg[1:]}]}
     elif check(msg)=='Fake':
         if check_fake(msg):
             return ('True')
