@@ -25,7 +25,7 @@ def get_name(msg):
 
 def pct_change(open_price,current_price):
     pct = ((current_price-open_price)/open_price)*100
-    return pct
+    return float(pct)
 
 def get_details(msg):
     start_date = dt.datetime(2015, 1, 1)
@@ -36,11 +36,11 @@ def get_details(msg):
     return jsonify(
         name=get_name(msg),
         website='https://amstock.herokuapp.com/%' + msg,
-        close=df['Close'][-1],
-        open=df['Open'][-1],
-        high=df['High'][-1],
-        low=df['Low'][-1],
-        volume=df['Volume'][-1],
+        close=float(df['Close'][-1]),
+        open=float(df['Open'][-1]),
+        high=float(df['High'][-1]),
+        low=float(df['Low'][-1]),
+        volume=float(df['Volume'][-1]),
         percent=pct_change(df['Open'][-1], df['Close'][-1])
     )
 
