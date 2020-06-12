@@ -64,13 +64,10 @@ def check_spam(msg):
         return False
 
 def check(msg):
-    if msg[0]=='%':
-        if check_symbol(msg[1:]):
+    if msg[0]=='_':
+        if 'stock' in msg[1:]:
             return 'Stock'
-        else:
-            return 'Invalid Symbol'
-    elif msg[0]=='_':
-        if 'fake' in msg[1:]:
+        elif 'fake' in msg[1:]:
             return 'Fake'
         elif 'spam'in msg[1:]:
             return 'Spam'
@@ -126,8 +123,8 @@ def predict(msg):
 
         return (random.choice(responses))
     elif check(msg)=='Stock':
-        if check_symbol(msg[1:]):
-            return get_details(msg[1:])
+        if check_symbol(msg[6:]):
+            return get_details(msg[6:])
     elif check(msg)=='Fake':
         if check_fake(msg):
             return ('True')
