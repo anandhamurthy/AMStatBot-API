@@ -41,7 +41,7 @@ def get_details(msg):
         high=float(df['High'][-1]),
         low=float(df['Low'][-1]),
         volume=float(df['Volume'][-1]),
-        percent=pct_change(df['Open'][-1], df['Close'][-1])
+        percent=pct_change(df['Close'][-2], df['Close'][-1])
     )
 
 def check_symbol(sym):
