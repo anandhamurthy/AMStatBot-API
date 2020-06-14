@@ -11,11 +11,6 @@
         {"tag": "thanks",
          "patterns": ["Thanks", "Thank you", "That's helpful"],
          "responses": ["Happy to help!", "Any time!", "My pleasure"]
-        },
-        {"tag": "news",
-         "patterns": ["news", "show some news", "what are top news on statistics?",
-           "what are top news on finance?", "news on finance", "get me news", "get me news on finance", "get me news on statistics?" ],
-         "responses": ["https://amspamclass.herokuapp.com/predict/"]
         }
    ]
 }
