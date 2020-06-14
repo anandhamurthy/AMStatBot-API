@@ -49,20 +49,6 @@ def check_symbol(sym):
         if sym==i:
             return True
 
-def check_fake(msg):
-    r = requests.post(url='https://amfakeclass.herokuapp.com/predict/'+msg)
-    if r.text=='True':
-        return 'Fake'
-    else:
-        return 'Real'
-
-def check_spam(msg):
-    r = requests.post(url='https://amspamclass.herokuapp.com/predict/' + msg)
-    if r.text == 'True':
-        return True
-    else:
-        return False
-
 def check(msg):
     if msg[0]=='_':
         if 'stock' in msg[1:]:
@@ -127,16 +113,6 @@ def predict(msg):
             return get_details(msg[6:])
         else:
             return 'Invalid'
-    elif check(msg)=='Fake':
-        if check_fake(msg):
-            return ('True')
-        else:
-            return ('False')
-    elif check(msg)=='Spam':
-        if check_spam(msg):
-            return ('The Message is Ham')
-        else:
-            return ('The Message is Spam')
 
 if __name__ == "__main__":
     app.run(debug=True)
