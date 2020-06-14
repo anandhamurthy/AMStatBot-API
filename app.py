@@ -125,6 +125,8 @@ def predict(msg):
     elif check(msg)=='Stock':
         if check_symbol(msg[6:]):
             return get_details(msg[6:])
+        else:
+            return 'Invalid'
     elif check(msg)=='Fake':
         if check_fake(msg):
             return ('True')
@@ -132,9 +134,9 @@ def predict(msg):
             return ('False')
     elif check(msg)=='Spam':
         if check_spam(msg):
-            return ('Spam')
+            return ('The Message is Ham')
         else:
-            return ('Ham')
+            return ('The Message is Spam')
 
 if __name__ == "__main__":
     app.run(debug=True)
