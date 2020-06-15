@@ -11,6 +11,10 @@
         {"tag": "thanks",
          "patterns": ["Thanks", "Thank you", "That's helpful"],
          "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {"tag": "news",
+         "patterns": ["get me news", "news", "show me finance news", "show mew financial news", "get me statistics news"],
+         "responses": ["https://amstocknews.herokuapp.com/news"]
         }
    ]
 }
