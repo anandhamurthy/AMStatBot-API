@@ -12,4 +12,4 @@ nltk==3.5
 requests==2.23.0
 yfinance==0.1.54
 pandas-datareader==0.8.1
-Flask-Cors==3.0.10
+
