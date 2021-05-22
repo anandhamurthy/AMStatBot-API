@@ -15,7 +15,8 @@ nltk.download('wordnet')
 stemmer = WordNetLemmatizer()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ['localhost', 'https://amstatbot.netlify.app']}})
+CORS(app, resources={r"/*": {"origins": "*"}})
+                             #['localhost', 'https://amstatbot.netlify.app']}})
 
 model = pickle.load(open('model.pkl', 'rb'))
 symbols = pd.read_csv('Symbols.csv')
