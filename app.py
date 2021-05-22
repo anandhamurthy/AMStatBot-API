@@ -8,11 +8,16 @@ from nltk.stem import WordNetLemmatizer
 import random
 import numpy
 import nltk
+from flask_cors import CORS
+
 nltk.download('punkt')
 nltk.download('wordnet')
 stemmer = WordNetLemmatizer()
 
 app = Flask(__name__)
+CORS(app, resources={
+     r"/api/*": {"origins": ['localhost', 'https://amstatbot.netlify.app']}})
+
 model = pickle.load(open('model.pkl', 'rb'))
 symbols = pd.read_csv('Symbols.csv')
 
